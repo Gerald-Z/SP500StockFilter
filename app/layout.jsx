@@ -3,6 +3,7 @@
 import '@styles/globals.css';
 import Nav from '@components/Nav';
 import Provider from '@components/Provider';
+import Padding from '@components/Padding';
 
 
 export const metadata = {
@@ -22,6 +23,7 @@ const RootLayout = ({ children }) => {
 
                     <main className="app">
                         <Nav />
+                        <Padding />
                         {children}
                     </main>
                 </Provider>

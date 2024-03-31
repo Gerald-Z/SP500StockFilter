@@ -2,8 +2,12 @@ import React from 'react'
 
 const Portfolio = () => {
   return (
-    <div>Portfolio</div>
-  )
+    <main>
+      <div className="mainPage">
+        Portfolio
+      </div>
+      
+    </main>  )
 }
 
 export default Portfolio;

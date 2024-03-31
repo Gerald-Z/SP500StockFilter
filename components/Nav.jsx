@@ -25,7 +25,7 @@ const Nav = () => {
     }, [])
 
   return (
-    <nav className="flex flex-row justify-between w-full mb-16 bg-black ">
+    <nav className="flex flex-nowrap flex-row justify-between w-full bg-black ">
         <Link href='/' className="flex-initial basis-1/8">
             <Image 
                 src="/images/sp500.png" 

@@ -2,7 +2,14 @@ import React from 'react'
 
 const Watchlist = () => {
   return (
-    <div>Watchlist</div>
+    <main>
+      <div className="mainPage">
+        <div className='infoSheet'>
+          
+        </div>
+      </div>
+    
+  </main>
   )
 }
 
