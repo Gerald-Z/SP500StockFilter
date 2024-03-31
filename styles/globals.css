@@ -5,3 +5,16 @@
 @tailwind utilities;
 
 
+.profileDropdown {
+    @apply absolute w-[1/1] p-4 rounded-lg bg-zinc-100 flex flex-col gap-2 justify-center items-center;
+    margin-top: 45px;
+    right: 3px;
+}
+
+.dropDownLink {
+    @apply text-sm font-serif text-gray-700 hover:text-gray-500 font-medium;
+}
+
+.blackBtn {
+    @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm flex items-center justify-center;
+}
