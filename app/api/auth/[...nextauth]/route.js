@@ -2,10 +2,11 @@ import NextAuth from "next-auth";
 import GoogleProvider from 'next-auth/providers/google';
 
 import User from '@models/user';
+import Watchlist from '@models/watchlist';
+
 import { connectTodb } from "@utils/database";
 
 // The route that will handle the authentication process
-// Refer to NextAuth.js for more details on the reason behind the code
 const handler = NextAuth({
     providers: [
         GoogleProvider({
@@ -20,7 +21,6 @@ const handler = NextAuth({
             const sessionUser = await User.findOne({
                 email: session.user.email
             })
-
             session.user.id = sessionUser._id.toString();
 
             return session;
@@ -29,6 +29,7 @@ const handler = NextAuth({
         async signIn({ profile }) {
             try {
                 await connectTodb();
+                const today = new Date();
 
                 // check if a user already exists
                 const userExists = await User.findOne({
@@ -40,7 +41,14 @@ const handler = NextAuth({
                     await User.create({
                         email: profile.email,
                         username: profile.name.replace(" ", "").toLowerCase(),
-                        image: profile.picture
+                        image: profile.picture,
+                        creationDate: today,
+                    })
+
+                    // Creates a new watchlist that is tied to the user profile by email.
+                    // By default, there is no ticker in the watchlist.
+                    await Watchlist.create({
+                        userEmail: profile.email,
                     })
                 }
                 return true;
