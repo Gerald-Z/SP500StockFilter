@@ -36,6 +36,7 @@
     border: 2px solid;
     border-radius: 5px;
     padding: 20px;
+    min-width: 500px;
 
     h1, label {
         display: block;
@@ -52,7 +53,8 @@
     }
 
     label {
-        margin: 10px 0;
+        margin-top: 10px;
+        margin-bottom: 5px;
     }
 
     button {
@@ -66,5 +68,24 @@
         min-width: 114px;
         display: block;
     }
+}
+
+.cardCriteria {
+    background-color: white;
+    margin: 0 auto;
+    width: 80%;
+    display: block;
+    height: 50%;
+    
+}
+
+.cardContainer {
+    margin: 0 auto;
+    width: 80%;
+    display: block;
+    height: 50%;
+}
+
+.stockCard {
 
 }
