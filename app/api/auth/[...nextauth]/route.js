@@ -49,6 +49,10 @@ const handler = NextAuth({
                     // By default, there is no ticker in the watchlist.
                     await Watchlist.create({
                         userEmail: profile.email,
+                        nameList: 'Example Name',
+                        tickerList: 'Example Ticker',
+                        dateAddedList: new Date(),
+                        costList: 10
                     })
                 }
                 return true;

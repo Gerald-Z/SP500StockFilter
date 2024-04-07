@@ -9,24 +9,24 @@ import { useState, useEffect } from 'react';
 const Page = () => {
   const { data: session} = useSession();
   
-  const [profilePic, setProfilePicture] = useState('');
+  const [profilePic, setProfilePicture] = useState(session?.user.image);
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(session?.user.email);
   const [date, setDate] = useState('');
-
+  const [size, setSize] = useState(0);
 
   useEffect(() => {   
-
     const fetchData = async () => {
         let response = await fetch(`api/users/getUserInfo?user=${session.user.email}`);
         response = await response.json();
         setProfilePicture(response.image);
         setUsername(response.username);
         setEmail(response.email);
-       // const resData = response.creationDate.to;
-        console.log(typeof response.creationDate);
         setDate(response.creationDate);
-    
+
+        let watchlistResponse = await fetch(`api/users/getWatchlist?user=${session.user.email}`);
+        watchlistResponse = await watchlistResponse.json();
+        setSize(watchlistResponse.size);
     }
     if (session) fetchData();
   }, [session])
@@ -91,12 +91,20 @@ const Page = () => {
               readOnly={true} 
             />
 
-          <label for='creationDate'> Account Created On: </label> 
+            <label for='creationDate'> Account Created On: </label> 
             <input 
               type='text' 
               value={date} 
               readOnly={true}
             />
+
+            <label for='creationDate'> Stocks in the Watchlist: </label> 
+            <input 
+              type='text' 
+              value={size} 
+              readOnly={true}
+            />
+
             <button type='submit'> Update Profile </button>
           </form>
         </div>

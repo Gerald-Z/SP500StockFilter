@@ -6,10 +6,8 @@ import { NextRequest, NextResponse } from "next/server";
 // The route that will handle the authentication process
 const handler = async (req, res) => {
     const user = req.nextUrl.searchParams.get('user');
-    console.log("USer: ", user);
     const body = await req.json();
     const newUsername = body.name;
-    console.log("New Username: ", newUsername);
 
     await connectTodb();
     const userInfo = await User.findOne({

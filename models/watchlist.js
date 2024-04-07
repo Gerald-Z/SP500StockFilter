@@ -6,6 +6,9 @@ const watchlistSchema = new Schema ({
         type: String,
         required: [true, 'Email is required!'],
     },
+    nameList: {
+        type: [String],
+    },
     tickerList: {
         type: [String],
         unique: [true, 'This Ticker is already in your watchlist!']
@@ -16,9 +19,6 @@ const watchlistSchema = new Schema ({
     costList: {
         type: [Number],
     },
-    notesList: {
-        type: [String],
-    }
 })
 
 
