@@ -31,24 +31,30 @@ const Page = () => {
     if (session) fetchData();
   }, [session])
 
-  /*
-  useEffect(() => {
-    setUsername(session?.user.name);
-    setEmail(session?.user.email);
-  }, [session])
-  
 
-  const handleUsernameChange = (e) => {
+  const handleUsernameChange = async (e) => {
     setUsername(e.target.value);
   }
+
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   }
 
 
-*/
-  const handleSubmit = () => {
+
+  const handleSubmit = async () => {
+    await fetch(`api/users/setUserInfo?user=${session.user.email}`, {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({name: username})
+    });
+
 
   }
 
@@ -73,13 +79,15 @@ const Page = () => {
             <input 
               type='text' 
               value={username} 
-              readOnly={true}
+              onChange={handleUsernameChange}
+              readOnly={false}
             /> 
 
             <label for='email'> Email: </label> 
             <input 
               type='text' 
               value={email} 
+              onChange={handleEmailChange}
               readOnly={true} 
             />
 
