@@ -35,12 +35,12 @@
     background-color: white;
     border: 2px solid;
     border-radius: 5px;
-    padding: 20px;
-    min-width: 500px;
+    padding: 10px;
+    min-width: 520px;
 
     h1, label {
         display: block;
-        padding: 5px;
+        padding: 0px;
         font-weight: bold;
     }
 
@@ -95,10 +95,11 @@
     flex-wrap: nowrap;
     justify-content: space-between;
     margin: 0 auto;
+    margin-bottom: 10px;
     border: 2px solid;
     border-radius: 5px;
     padding: 20px;
-    min-width: 500px;
+    min-width: 460px;
 
     &:hover {
         background-color: #fbf0f0;
@@ -137,28 +138,48 @@
     }
 
     .right {
-        flex: 0 1 20%;
+        flex: 0 1 10%;
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
 
-        .right-left {
+        .right-icon {
             flex: 0 1 40%;
             display: block;
-            margin: auto 0;
+            margin: auto 3px;
             svg {
                 height: 100%;
             }
         }
-        .right-right {
-            padding-left: 15px;
-            flex: 0 1 50%;
-            display: block;
-            margin: auto 0;
-            svg {
-                height: 100%;
-            }
-        }
+    }
+}
+
+.confirmSheet {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 50%;
+    background-color: white;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 520px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #fbf0f0;
+    }
+
+    .addText {
+        font-weight: normal;
+    }
+
+    .changeSuccessful {
+        color: green;
+    }
+    .changeFailed {
+        color: red;
     }
 }
 

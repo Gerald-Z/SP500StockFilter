@@ -24,7 +24,7 @@ const Page = () => {
         setEmail(response.email);
         setDate(response.creationDate);
 
-        let watchlistResponse = await fetch(`api/users/getWatchlist?user=${session.user.email}`);
+        let watchlistResponse = await fetch(`api/watchlist/getWatchlist?user=${session.user.email}`);
         watchlistResponse = await watchlistResponse.json();
         setSize(watchlistResponse.size);
     }
