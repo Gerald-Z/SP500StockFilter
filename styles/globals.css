@@ -89,3 +89,76 @@
 .stockCard {
 
 }
+
+.watchlistCard {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 20px;
+    min-width: 500px;
+
+    &:hover {
+        background-color: #fbf0f0;
+    }
+
+    h1 {
+        font-size: 25px;
+        margin-top: -10px;
+    }
+
+    .name {
+        margin-left: 5px;
+    }
+
+    .amount .desc {
+        font-size: 15px;
+    }
+
+    .left {
+        flex: 0 0 40%
+    }
+
+    .center {
+        flex: 0 0 40%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        .center-left {
+            flex: 0 0 50%;
+        }
+        .center-right {
+            flex: 0 0 50%
+        }
+
+    }
+
+    .right {
+        flex: 0 1 20%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        .right-left {
+            flex: 0 1 40%;
+            display: block;
+            margin: auto 0;
+            svg {
+                height: 100%;
+            }
+        }
+        .right-right {
+            padding-left: 15px;
+            flex: 0 1 50%;
+            display: block;
+            margin: auto 0;
+            svg {
+                height: 100%;
+            }
+        }
+    }
+}
+
