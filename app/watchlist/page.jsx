@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link';
 import WatchlistCard from '@components/WatchlistCard';
 import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
@@ -80,7 +81,9 @@ const Watchlist = () => {
           })}
         </div>
         <div className='confirmSheet'>
-          <p className='addText'>Add to Watchlist</p>
+          <Link href='/' className="flex-initial basis-1/8">
+            <p className='addText'>Add to Watchlist</p>
+          </Link>
         </div>
         <div className='confirmSheet' onClick={handleSave}>
           <p className={changeClass}>{changeStatus}</p>
