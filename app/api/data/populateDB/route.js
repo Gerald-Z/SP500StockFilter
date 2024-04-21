@@ -32,8 +32,8 @@ const fetchData = async (symbol) => {
   
    let priceRes = await fetchURL(dailyURL);
    let overviewRes = await fetchURL(companyOverviewURL);
-   console.log('Price Res: ', priceRes);
-   console.log('Overview Res: ', overviewRes);
+  // console.log('Price Res: ', priceRes);
+  // console.log('Overview Res: ', overviewRes);
    const returned = {dailyRes: priceRes, overviewRes: overviewRes};
    return returned;
 }
@@ -41,13 +41,13 @@ const fetchData = async (symbol) => {
 
 
 const handler = async (req, res) => {
-    console.log("Populate DB Handler is triggered");
+  //  console.log("Populate DB Handler is triggered");
     const symbol = req.nextUrl.searchParams.get('symbol');
-    console.log("Symbol: ", symbol);
+  //  console.log("Symbol: ", symbol);
 
     const {dailyRes, overviewRes} = await fetchData(symbol);
-   console.log('Price Res 2: ', dailyRes);
-   console.log('Overview Res 2: ', overviewRes);    
+ //  console.log('Price Res 2: ', dailyRes);
+ //  console.log('Overview Res 2: ', overviewRes);    
    await connectTodb();
 
     if (dailyRes && overviewRes) {
@@ -58,10 +58,10 @@ const handler = async (req, res) => {
                 name: overviewRes.Name,
                 industry: overviewRes.Industry,
                 marketCap: overviewRes.MarketCapitalization,
-                pe: overviewRes.PERatio,
-                divYield: overviewRes.DividendYield,
+                pe: overviewRes.PERatio === 'None' ? 0 : overviewRes.PERatio,
+                divYield: overviewRes.DividendYield === 'None' ? 0 : overviewRes.DividendYield,
                 beta: overviewRes.Beta,
-                profitMargin: overviewRes.ProfitMargin
+                profitMargin: overviewRes.ProfitMargin === 'None' ? 0 : overviewRes.ProfitMargin,
               });
               return NextResponse.json({
                 message: "This update was successful!"

@@ -51,21 +51,6 @@ const WatchlistCard = ({ticker, name, watchlist, setWatchlist}) => {
           <h1 className='ticker'>{ticker}</h1>
           <p className='name'>{name}</p>
         </div>
-        {/*
-        <div className='center'>
-          <div className='center-left'>
-            <p className='desc'>Added Price:</p>
-            <p className='desc'>Current Price:</p>
-            <p className='desc'>Change:</p>
-          </div>
-          <div className='center-right'>
-            <p className='amount'>${cost}</p>
-            <p className='amount'>${currentPrice}</p>
-            <p className='amount'>${currentPrice-cost}</p>
-          </div>
-          
-        </div>
-            */}
 
         <div className='right'>
           <div className='right-icon'>
