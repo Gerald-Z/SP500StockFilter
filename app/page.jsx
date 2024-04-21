@@ -9,6 +9,8 @@ import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 export default function Home() {
   const [allSymbolList, setAllSymbolList] = useState([]);
+  const [filteredSymbolList, setfilteredSymbolList] = useState([]);
+
   const [watchlist, setWatchlist] = useState([]);
   const { data: session} = useSession();
 
@@ -17,6 +19,7 @@ export default function Home() {
         let listResponse = await fetch(`api/data/getAllSymbols`);
         listResponse = await listResponse.json();
         setAllSymbolList(listResponse.list);
+        setfilteredSymbolList(listResponse.list);
     }
     fetchAllSymbols();
   }, [])
@@ -31,16 +34,26 @@ export default function Home() {
     if (session) fetchWatchlist();
   }, [session])
 
-
+  
+  const handleSearch = (e) => {
+    const filteredList = allSymbolList.filter((ticker) => {
+      return ticker.toLowerCase().includes(e.target.value);
+    });
+    setfilteredSymbolList(filteredList);
+  }
 
 
   return (
     <main>
       <div className="mainPage">
-        <input type="text" className='searchBar' />
+        <input 
+          type="text" 
+          className='searchBar' 
+          onChange={handleSearch}
+        />
 
         <div className='portfolioContainer'>
-          {allSymbolList.map((ticker) => {
+          {filteredSymbolList.map((ticker) => {
             
             return (
               <Card 

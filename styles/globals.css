@@ -22,9 +22,16 @@
 .mainPage {
     background-color:#fbf0f0; 
     min-height: 100vh;
-    
+
     .searchBar {
         display: block;
+        height: 50px;
+        border: 2px solid;
+        border-radius: 5px;
+        width: 75%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        padding: 10px;
     }
 }
 

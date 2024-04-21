@@ -11,11 +11,9 @@ const Card = ({mainPage, symbol, cardStyle, watchlist, setWatchlist}) => {
   const [stockInfo, setStockInfo] = useState({});
   const [canAdd, setCanAdd] = useState(true);
   const { data: session} = useSession();
-  console.log("Watchlist: ", watchlist);
 
   // Fetches data for the stock with ticker symbol and checks to see if it is already in the user's watchlist.
   useEffect(() => {
-    console.log("Use Effect: ", watchlist);
     const fetchData = async () => {
       let stockResponse = await fetch(`api/data/getStock?symbol=${symbol}`);
       stockResponse = await stockResponse.json();
@@ -23,10 +21,7 @@ const Card = ({mainPage, symbol, cardStyle, watchlist, setWatchlist}) => {
     }
 
     const checkAdd = async () => {
-      console.log("Check Add: ", watchlist);
-      console.log("Symbol: ", symbol);
       if (watchlist.includes(symbol)) {
-        console.log("TRUE");
         setCanAdd(false);
       }
     }
@@ -64,7 +59,6 @@ const Card = ({mainPage, symbol, cardStyle, watchlist, setWatchlist}) => {
             <div className='left'>
               <div>
                 <h1>{symbol}</h1>
-                {console.log("Can Add: ", symbol, ' State: ', canAdd)}
                 {canAdd
                 ? <FontAwesomeIcon icon={faSquarePlus} onClick={handleAdd}/> 
                 : <></>}
