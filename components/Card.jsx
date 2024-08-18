@@ -72,6 +72,59 @@ const Card = ({mainPage, symbol, cardStyle, watchlist, setWatchlist}) => {
             </div>
           </div>
         )
+        : cardStyle === 'defaultExample'
+        ? (
+          <div className='stockCard'>
+            <div className='left'>
+              <div>
+                <h1>Ticker</h1>
+                <FontAwesomeIcon icon={faSquarePlus} onClick={handleAdd}/> 
+              </div>
+              <p>Company Name</p>
+            </div>
+            <div className='right'>
+              <p>Price</p>
+              <p>P/E Ratio</p>
+              <p>Dividend Yield</p>
+            </div>
+          </div>
+        )
+        : cardStyle === 'styleTwo'
+        ? (
+          <div className='stockCard'>
+            <div className='left'>
+              <div>
+                <h1>{symbol}</h1>
+                {canAdd
+                ? <FontAwesomeIcon icon={faSquarePlus} onClick={handleAdd}/> 
+                : <></>}
+              </div>
+              <p>{stockInfo.name}</p>
+            </div>
+            <div className='right'>
+              <p>${stockInfo.price}</p>
+              <p>{stockInfo.profitMargin.toFixed(2)}</p>
+              <p>{stockInfo.beta.toFixed(2)}</p>
+            </div>
+          </div>
+        )
+        : cardStyle === 'styleTwoExample'
+        ? (
+          <div className='stockCard'>
+            <div className='left'>
+              <div>
+                <h1>Ticker</h1>
+                <FontAwesomeIcon icon={faSquarePlus} onClick={handleAdd}/> 
+              </div>
+              <p>Company Name</p>
+            </div>
+            <div className='right'>
+              <p>Price</p>
+              <p>Profit Margin</p>
+              <p>Beta</p>
+            </div>
+          </div>
+        )
         : <></>
       }
     </>

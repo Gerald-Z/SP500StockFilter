@@ -24,6 +24,9 @@ const Portfolio = () => {
   return (
     <main>
       <div className="mainPage">
+        <div className="headerContainer">
+          <h1 className="header">My Portfolio: </h1>
+        </div>
         <div className='portfolioContainer'>
           {symbolList.map((ticker) => {
             return (<Card mainPage={false} cardStyle={cardStyle} symbol={ticker} />)

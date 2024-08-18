@@ -37,7 +37,7 @@ export default function Home() {
   
   const handleSearch = (e) => {
     const filteredList = allSymbolList.filter((ticker) => {
-      return ticker.toLowerCase().includes(e.target.value);
+      return ticker.toLowerCase().includes(e.target.value.toLowerCase());
     });
     setfilteredSymbolList(filteredList);
   }
@@ -46,6 +46,9 @@ export default function Home() {
   return (
     <main>
       <div className="mainPage">
+        <div className="headerContainer">
+          <h1 className="header">Look Up Stocks With Custom Conditions Below: </h1>
+        </div>
         <input 
           type="text" 
           className='searchBar' 

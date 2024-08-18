@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 import { useState, useEffect } from 'react';
+import Card from '@components/Card';
 
 
 const Page = () => {
@@ -98,12 +99,22 @@ const Page = () => {
               readOnly={true}
             />
 
-            <label for='creationDate'> Stocks in the Watchlist: </label> 
+            <label for='watchlistSize'> Stocks in the Watchlist: </label> 
             <input 
               type='text' 
               value={size} 
               readOnly={true}
             />
+
+            <label for='cardStyle'> Card Style: </label> 
+            <select name="cardStyle" id="cardStyle">
+              <option value="default">Default</option>
+              <option value="default">Style Two</option>
+            </select>
+
+            
+            <label for='cardStyle'> Style Example: </label> 
+            <Card mainPage={false} cardStyle={'defaultExample'} symbol={'AAPL'} />
 
             <button type='submit'> Update Profile </button>
           </form>

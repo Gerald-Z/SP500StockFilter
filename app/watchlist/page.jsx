@@ -70,6 +70,9 @@ const Watchlist = () => {
   return (
     <main>
       <div className="mainPage">
+        <div className="headerContainer">
+          <h1 className="header">My Watchlist: </h1>
+        </div>
         <div className='infoSheet'>
           {watchlist.map((obj) => {
             return <WatchlistCard 
